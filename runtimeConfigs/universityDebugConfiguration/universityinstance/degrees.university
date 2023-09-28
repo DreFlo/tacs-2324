@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<university:Degree xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:university="http://university" name="MEIC">
+  <courses href="courses.university#/"/>
+  <students href="students.university#/"/>
+</university:Degree>

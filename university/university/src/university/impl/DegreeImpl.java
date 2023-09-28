@@ -2,17 +2,22 @@
  */
 package university.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import university.Course;
 import university.Degree;
+import university.Student;
 import university.UniversityPackage;
 
 /**
@@ -25,6 +30,7 @@ import university.UniversityPackage;
  * <ul>
  *   <li>{@link university.impl.DegreeImpl#getName <em>Name</em>}</li>
  *   <li>{@link university.impl.DegreeImpl#getCourses <em>Courses</em>}</li>
+ *   <li>{@link university.impl.DegreeImpl#getStudents <em>Students</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,6 +65,16 @@ public class DegreeImpl extends MinimalEObjectImpl.Container implements Degree {
 	 * @ordered
 	 */
 	protected Course courses;
+
+	/**
+	 * The cached value of the '{@link #getStudents() <em>Students</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStudents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Student> students;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,12 +186,28 @@ public class DegreeImpl extends MinimalEObjectImpl.Container implements Degree {
 	 * @generated
 	 */
 	@Override
+	public EList<Student> getStudents() {
+		if (students == null) {
+			students = new EObjectWithInverseResolvingEList<Student>(Student.class, this, UniversityPackage.DEGREE__STUDENTS, UniversityPackage.STUDENT__DEGREE);
+		}
+		return students;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UniversityPackage.DEGREE__COURSES:
 				if (courses != null)
 					msgs = ((InternalEObject)courses).eInverseRemove(this, UniversityPackage.COURSE__DEGREES, Course.class, msgs);
 				return basicSetCourses((Course)otherEnd, msgs);
+			case UniversityPackage.DEGREE__STUDENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getStudents()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -190,6 +222,8 @@ public class DegreeImpl extends MinimalEObjectImpl.Container implements Degree {
 		switch (featureID) {
 			case UniversityPackage.DEGREE__COURSES:
 				return basicSetCourses(null, msgs);
+			case UniversityPackage.DEGREE__STUDENTS:
+				return ((InternalEList<?>)getStudents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -207,6 +241,8 @@ public class DegreeImpl extends MinimalEObjectImpl.Container implements Degree {
 			case UniversityPackage.DEGREE__COURSES:
 				if (resolve) return getCourses();
 				return basicGetCourses();
+			case UniversityPackage.DEGREE__STUDENTS:
+				return getStudents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -216,6 +252,7 @@ public class DegreeImpl extends MinimalEObjectImpl.Container implements Degree {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -224,6 +261,10 @@ public class DegreeImpl extends MinimalEObjectImpl.Container implements Degree {
 				return;
 			case UniversityPackage.DEGREE__COURSES:
 				setCourses((Course)newValue);
+				return;
+			case UniversityPackage.DEGREE__STUDENTS:
+				getStudents().clear();
+				getStudents().addAll((Collection<? extends Student>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -243,6 +284,9 @@ public class DegreeImpl extends MinimalEObjectImpl.Container implements Degree {
 			case UniversityPackage.DEGREE__COURSES:
 				setCourses((Course)null);
 				return;
+			case UniversityPackage.DEGREE__STUDENTS:
+				getStudents().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -259,6 +303,8 @@ public class DegreeImpl extends MinimalEObjectImpl.Container implements Degree {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UniversityPackage.DEGREE__COURSES:
 				return courses != null;
+			case UniversityPackage.DEGREE__STUDENTS:
+				return students != null && !students.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

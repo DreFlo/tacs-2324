@@ -2,6 +2,7 @@
  */
 package university;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link university.Degree#getName <em>Name</em>}</li>
  *   <li>{@link university.Degree#getCourses <em>Courses</em>}</li>
+ *   <li>{@link university.Degree#getStudents <em>Students</em>}</li>
  * </ul>
  *
  * @see university.UniversityPackage#getDegree()
@@ -67,5 +69,19 @@ public interface Degree extends EObject {
 	 * @generated
 	 */
 	void setCourses(Course value);
+
+	/**
+	 * Returns the value of the '<em><b>Students</b></em>' reference list.
+	 * The list contents are of type {@link university.Student}.
+	 * It is bidirectional and its opposite is '{@link university.Student#getDegree <em>Degree</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Students</em>' reference list.
+	 * @see university.UniversityPackage#getDegree_Students()
+	 * @see university.Student#getDegree
+	 * @model opposite="degree"
+	 * @generated
+	 */
+	EList<Student> getStudents();
 
 } // Degree

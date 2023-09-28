@@ -186,13 +186,22 @@ public interface UniversityPackage extends EPackage {
 	int DEGREE__COURSES = 1;
 
 	/**
+	 * The feature id for the '<em><b>Students</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEGREE__STUDENTS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Degree</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEGREE_FEATURE_COUNT = 2;
+	int DEGREE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Degree</em>' class.
@@ -305,7 +314,7 @@ public interface UniversityPackage extends EPackage {
 	int EDITION__PROFESSORS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Grades</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Grades</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -415,13 +424,22 @@ public interface UniversityPackage extends EPackage {
 	int STUDENT__BIRTHDATE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Degree</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STUDENT__DEGREE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Student</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STUDENT_FEATURE_COUNT = 3;
+	int STUDENT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Student</em>' class.
@@ -452,13 +470,31 @@ public interface UniversityPackage extends EPackage {
 	int GRADE__VALUE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Edition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRADE__EDITION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Student</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRADE__STUDENT = 2;
+
+	/**
 	 * The number of structural features of the '<em>Grade</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GRADE_FEATURE_COUNT = 1;
+	int GRADE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Grade</em>' class.
@@ -578,6 +614,17 @@ public interface UniversityPackage extends EPackage {
 	EReference getDegree_Courses();
 
 	/**
+	 * Returns the meta object for the reference list '{@link university.Degree#getStudents <em>Students</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Students</em>'.
+	 * @see university.Degree#getStudents()
+	 * @see #getDegree()
+	 * @generated
+	 */
+	EReference getDegree_Students();
+
+	/**
 	 * Returns the meta object for class '{@link university.Course <em>Course</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -675,10 +722,10 @@ public interface UniversityPackage extends EPackage {
 	EReference getEdition_Professors();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link university.Edition#getGrades <em>Grades</em>}'.
+	 * Returns the meta object for the reference list '{@link university.Edition#getGrades <em>Grades</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Grades</em>'.
+	 * @return the meta object for the reference list '<em>Grades</em>'.
 	 * @see university.Edition#getGrades()
 	 * @see #getEdition()
 	 * @generated
@@ -761,6 +808,17 @@ public interface UniversityPackage extends EPackage {
 	EAttribute getStudent_Birthdate();
 
 	/**
+	 * Returns the meta object for the reference '{@link university.Student#getDegree <em>Degree</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Degree</em>'.
+	 * @see university.Student#getDegree()
+	 * @see #getStudent()
+	 * @generated
+	 */
+	EReference getStudent_Degree();
+
+	/**
 	 * Returns the meta object for class '{@link university.Grade <em>Grade</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -780,6 +838,28 @@ public interface UniversityPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGrade_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link university.Grade#getEdition <em>Edition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Edition</em>'.
+	 * @see university.Grade#getEdition()
+	 * @see #getGrade()
+	 * @generated
+	 */
+	EReference getGrade_Edition();
+
+	/**
+	 * Returns the meta object for the container reference '{@link university.Grade#getStudent <em>Student</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Student</em>'.
+	 * @see university.Grade#getStudent()
+	 * @see #getGrade()
+	 * @generated
+	 */
+	EReference getGrade_Student();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -891,6 +971,14 @@ public interface UniversityPackage extends EPackage {
 		EReference DEGREE__COURSES = eINSTANCE.getDegree_Courses();
 
 		/**
+		 * The meta object literal for the '<em><b>Students</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEGREE__STUDENTS = eINSTANCE.getDegree_Students();
+
+		/**
 		 * The meta object literal for the '{@link university.impl.CourseImpl <em>Course</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -967,7 +1055,7 @@ public interface UniversityPackage extends EPackage {
 		EReference EDITION__PROFESSORS = eINSTANCE.getEdition_Professors();
 
 		/**
-		 * The meta object literal for the '<em><b>Grades</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Grades</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1035,6 +1123,14 @@ public interface UniversityPackage extends EPackage {
 		EAttribute STUDENT__BIRTHDATE = eINSTANCE.getStudent_Birthdate();
 
 		/**
+		 * The meta object literal for the '<em><b>Degree</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STUDENT__DEGREE = eINSTANCE.getStudent_Degree();
+
+		/**
 		 * The meta object literal for the '{@link university.impl.GradeImpl <em>Grade</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1051,6 +1147,22 @@ public interface UniversityPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GRADE__VALUE = eINSTANCE.getGrade_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Edition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GRADE__EDITION = eINSTANCE.getGrade_Edition();
+
+		/**
+		 * The meta object literal for the '<em><b>Student</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GRADE__STUDENT = eINSTANCE.getGrade_Student();
 
 	}
 

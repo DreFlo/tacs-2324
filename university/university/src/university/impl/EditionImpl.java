@@ -14,9 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import university.Edition;
@@ -92,7 +91,7 @@ public class EditionImpl extends MinimalEObjectImpl.Container implements Edition
 	protected EList<Professor> professors;
 
 	/**
-	 * The cached value of the '{@link #getGrades() <em>Grades</em>}' containment reference list.
+	 * The cached value of the '{@link #getGrades() <em>Grades</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGrades()
@@ -187,9 +186,24 @@ public class EditionImpl extends MinimalEObjectImpl.Container implements Edition
 	@Override
 	public EList<Grade> getGrades() {
 		if (grades == null) {
-			grades = new EObjectContainmentEList<Grade>(Grade.class, this, UniversityPackage.EDITION__GRADES);
+			grades = new EObjectWithInverseResolvingEList<Grade>(Grade.class, this, UniversityPackage.EDITION__GRADES, UniversityPackage.GRADE__EDITION);
 		}
 		return grades;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UniversityPackage.EDITION__GRADES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getGrades()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

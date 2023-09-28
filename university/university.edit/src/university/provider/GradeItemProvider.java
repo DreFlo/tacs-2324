@@ -61,6 +61,7 @@ public class GradeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addValuePropertyDescriptor(object);
+			addEditionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -83,6 +84,28 @@ public class GradeItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Edition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEditionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Grade_edition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Grade_edition_feature", "_UI_Grade_type"),
+				 UniversityPackage.Literals.GRADE__EDITION,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

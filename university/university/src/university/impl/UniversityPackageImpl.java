@@ -249,6 +249,16 @@ public class UniversityPackageImpl extends EPackageImpl implements UniversityPac
 	 * @generated
 	 */
 	@Override
+	public EReference getDegree_Students() {
+		return (EReference)degreeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCourse() {
 		return courseEClass;
 	}
@@ -419,6 +429,16 @@ public class UniversityPackageImpl extends EPackageImpl implements UniversityPac
 	 * @generated
 	 */
 	@Override
+	public EReference getStudent_Degree() {
+		return (EReference)studentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getGrade() {
 		return gradeEClass;
 	}
@@ -431,6 +451,26 @@ public class UniversityPackageImpl extends EPackageImpl implements UniversityPac
 	@Override
 	public EAttribute getGrade_Value() {
 		return (EAttribute)gradeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGrade_Edition() {
+		return (EReference)gradeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGrade_Student() {
+		return (EReference)gradeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -474,6 +514,7 @@ public class UniversityPackageImpl extends EPackageImpl implements UniversityPac
 		degreeEClass = createEClass(DEGREE);
 		createEAttribute(degreeEClass, DEGREE__NAME);
 		createEReference(degreeEClass, DEGREE__COURSES);
+		createEReference(degreeEClass, DEGREE__STUDENTS);
 
 		courseEClass = createEClass(COURSE);
 		createEAttribute(courseEClass, COURSE__NAME);
@@ -495,9 +536,12 @@ public class UniversityPackageImpl extends EPackageImpl implements UniversityPac
 		createEAttribute(studentEClass, STUDENT__NAME);
 		createEReference(studentEClass, STUDENT__GRADES);
 		createEAttribute(studentEClass, STUDENT__BIRTHDATE);
+		createEReference(studentEClass, STUDENT__DEGREE);
 
 		gradeEClass = createEClass(GRADE);
 		createEAttribute(gradeEClass, GRADE__VALUE);
+		createEReference(gradeEClass, GRADE__EDITION);
+		createEReference(gradeEClass, GRADE__STUDENT);
 	}
 
 	/**
@@ -542,6 +586,7 @@ public class UniversityPackageImpl extends EPackageImpl implements UniversityPac
 		initEClass(degreeEClass, Degree.class, "Degree", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDegree_Name(), ecorePackage.getEString(), "name", null, 0, 1, Degree.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDegree_Courses(), this.getCourse(), this.getCourse_Degrees(), "courses", null, 0, 1, Degree.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDegree_Students(), this.getStudent(), this.getStudent_Degree(), "students", null, 0, -1, Degree.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(courseEClass, Course.class, "Course", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCourse_Name(), ecorePackage.getEString(), "name", null, 0, 1, Course.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -553,7 +598,7 @@ public class UniversityPackageImpl extends EPackageImpl implements UniversityPac
 		initEAttribute(getEdition_Year(), ecorePackage.getEInt(), "year", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEdition_Name(), ecorePackage.getEString(), "name", null, 0, 1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEdition_Professors(), this.getProfessor(), null, "professors", null, 0, -1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getEdition_Grades(), this.getGrade(), null, "grades", null, 0, -1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEdition_Grades(), this.getGrade(), this.getGrade_Edition(), "grades", null, 0, -1, Edition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(professorEClass, Professor.class, "Professor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProfessor_Name(), ecorePackage.getEString(), "name", null, 0, 1, Professor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -561,11 +606,14 @@ public class UniversityPackageImpl extends EPackageImpl implements UniversityPac
 
 		initEClass(studentEClass, Student.class, "Student", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStudent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Student.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStudent_Grades(), this.getGrade(), null, "grades", null, 0, -1, Student.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudent_Grades(), this.getGrade(), this.getGrade_Student(), "grades", null, 0, -1, Student.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStudent_Birthdate(), ecorePackage.getEDate(), "birthdate", null, 0, 1, Student.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStudent_Degree(), this.getDegree(), this.getDegree_Students(), "degree", null, 0, 1, Student.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gradeEClass, Grade.class, "Grade", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGrade_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Grade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGrade_Edition(), this.getEdition(), this.getEdition_Grades(), "edition", null, 0, 1, Grade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGrade_Student(), this.getStudent(), this.getStudent_Grades(), "student", null, 0, 1, Grade.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

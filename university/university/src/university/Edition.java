@@ -83,13 +83,15 @@ public interface Edition extends EObject {
 	EList<Professor> getProfessors();
 
 	/**
-	 * Returns the value of the '<em><b>Grades</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Grades</b></em>' reference list.
 	 * The list contents are of type {@link university.Grade}.
+	 * It is bidirectional and its opposite is '{@link university.Grade#getEdition <em>Edition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Grades</em>' containment reference list.
+	 * @return the value of the '<em>Grades</em>' reference list.
 	 * @see university.UniversityPackage#getEdition_Grades()
-	 * @model containment="true"
+	 * @see university.Grade#getEdition
+	 * @model opposite="edition"
 	 * @generated
 	 */
 	EList<Grade> getGrades();

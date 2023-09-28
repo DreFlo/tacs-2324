@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link university.Student#getName <em>Name</em>}</li>
  *   <li>{@link university.Student#getGrades <em>Grades</em>}</li>
  *   <li>{@link university.Student#getBirthdate <em>Birthdate</em>}</li>
+ *   <li>{@link university.Student#getDegree <em>Degree</em>}</li>
  * </ul>
  *
  * @see university.UniversityPackage#getStudent()
@@ -52,11 +53,13 @@ public interface Student extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Grades</b></em>' containment reference list.
 	 * The list contents are of type {@link university.Grade}.
+	 * It is bidirectional and its opposite is '{@link university.Grade#getStudent <em>Student</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Grades</em>' containment reference list.
 	 * @see university.UniversityPackage#getStudent_Grades()
-	 * @model containment="true"
+	 * @see university.Grade#getStudent
+	 * @model opposite="student" containment="true"
 	 * @generated
 	 */
 	EList<Grade> getGrades();
@@ -82,5 +85,29 @@ public interface Student extends EObject {
 	 * @generated
 	 */
 	void setBirthdate(Date value);
+
+	/**
+	 * Returns the value of the '<em><b>Degree</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link university.Degree#getStudents <em>Students</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Degree</em>' reference.
+	 * @see #setDegree(Degree)
+	 * @see university.UniversityPackage#getStudent_Degree()
+	 * @see university.Degree#getStudents
+	 * @model opposite="students"
+	 * @generated
+	 */
+	Degree getDegree();
+
+	/**
+	 * Sets the value of the '{@link university.Student#getDegree <em>Degree</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Degree</em>' reference.
+	 * @see #getDegree()
+	 * @generated
+	 */
+	void setDegree(Degree value);
 
 } // Student

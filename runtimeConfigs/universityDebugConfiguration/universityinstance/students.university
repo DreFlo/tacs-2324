@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<university:Student xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:university="http://university" name="André">
+  <degree href="degrees.university#/"/>
+</university:Student>

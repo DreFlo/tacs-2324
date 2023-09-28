@@ -65,6 +65,7 @@ public class StudentItemProvider
 
 			addNamePropertyDescriptor(object);
 			addBirthdatePropertyDescriptor(object);
+			addDegreePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -109,6 +110,28 @@ public class StudentItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Degree feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDegreePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Student_degree_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Student_degree_feature", "_UI_Student_type"),
+				 UniversityPackage.Literals.STUDENT__DEGREE,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

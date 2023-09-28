@@ -17,6 +17,7 @@
     <genClasses ecoreClass="university.ecore#//Degree">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute university.ecore#//Degree/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference university.ecore#//Degree/courses"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference university.ecore#//Degree/students"/>
     </genClasses>
     <genClasses ecoreClass="university.ecore#//Course">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute university.ecore#//Course/name"/>
@@ -38,9 +39,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute university.ecore#//Student/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference university.ecore#//Student/grades"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute university.ecore#//Student/birthdate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference university.ecore#//Student/degree"/>
     </genClasses>
     <genClasses ecoreClass="university.ecore#//Grade">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute university.ecore#//Grade/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference university.ecore#//Grade/edition"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference university.ecore#//Grade/student"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
