@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tut:Library
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tut="http://www.eclipse.org/mdt/ocl/oclinecore/tutorial"
+    xsi:schemaLocation="http://www.eclipse.org/mdt/ocl/oclinecore/tutorial tutorial.ecore"
+    name="lib">
+  <books name="1"
+      copies="2"/>
+  <books name="2"
+      copies="2"/>
+  <loans book="//@books.0"
+      member="//@members.2"/>
+  <loans book="//@books.1"
+      member="//@members.2"/>
+  <loans book="//@books.1"
+      member="//@members.2"/>
+  <members name="1"/>
+  <members name="2"/>
+  <members name="3"/>
+</tut:Library>
